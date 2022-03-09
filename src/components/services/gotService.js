@@ -12,7 +12,7 @@ export default class GotService {
         return await res.json();
     }
 
-    async getAllCharacter() {
+    async getAllCharacters() {
         const res = await this.getResource(`/characters?page=5&pageSize=10`);
         return res.map(this._tranformCharacter);
     }
@@ -39,6 +39,10 @@ export default class GotService {
     }
 
     _tranformCharacter(char) {
+        if (!char.born) {char.born = 'no data :('}
+        if (!char.died) {char.died = 'no data :('}
+        if (!char.culture) {char.culture = 'no data :('}
+
         return {
             name: char.name,
             gender: char.gender,
