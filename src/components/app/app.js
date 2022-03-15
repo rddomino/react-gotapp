@@ -4,8 +4,7 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from '../errorMessage';
 import CharacterPage from '../characterPage/characterPage';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import {BooksPage, BooksItem, HousesPage} from '../pages';
 import gotService from '../services/gotService';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -59,7 +58,10 @@ export default class App extends Component {
                         </Row>
 
                         <Routes>
-                            <Route path='/characters' element={<CharacterPage/>} />                            
+                            <Route path='/characters' element={<CharacterPage/>} />  
+                            <Route path='/books' exact element={<BooksPage/>} />  
+                            <Route path='/houses' exact element={<HousesPage/>} /> 
+                            <Route path='/books/:id' render={ () => <BooksItem/>} />                         
                         </Routes>
                         
                         
